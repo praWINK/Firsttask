@@ -6,43 +6,44 @@
     - devise_error_messages!
     .form-horizontal
       .form-group
-        = f.label :Firstname, :class => "col-sm-2 control-label"
-        .col-sm-10
+        = f.label :Firstname, :class => "col-sm-4 control-label"
+        .col-sm-8
           = f.text_field :Firstname, :class => "form-control"
       .form-group
-        = f.label :lastname, :class => "col-sm-2 control-label"
-        .col-sm-10
+        = f.label :lastname, :class => "col-sm-4 control-label"
+        .col-sm-8
           = f.text_field :lastname, :class => "form-control"
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}
       .form-group
-        = f.label :email, :class => "col-sm-2 control-label"
-        .col-sm-10
+        = f.label :email, :class => "col-sm-4 control-label"
+        .col-sm-8
           = f.email_field :email, :class => "form-control"
       .form-group
-        = f.label :password, :class => "col-sm-2 control-label"
-        .col-sm-10
+        = f.label :password, :class => "col-sm-4 control-label"
+        .col-sm-8
           = f.password_field :password, autocomplete: "off", :class => "form-control"
           %i.pull-right
             (leave blank if you don't want to change it)
       .form-group
-        = f.label :password_confirmation, :class => "col-sm-2 control-label"
-        .col-sm-10
+        = f.label :password_confirmation, :class => "col-sm-4 control-label"
+        .col-sm-8
           = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control"
       .form-group
-        = f.label :current_password, :class => "col-sm-2 control-label"
-        .col-sm-10
+        = f.label :current_password, :class => "col-sm-4 control-label"
+        .col-sm-8
           = f.password_field :current_password, autocomplete: "off", :class => "form-control"
           %i.pull-right
             (we need your current password to confirm your changes)
       .form-group
-        = f.label :Add_Avatar, :class => "col-sm-2 control-label"
-        = f.file_field :avatar, :class => "col-sm-10"
-        %br/
+        = f.label :Add_Avatar, :class => "col-sm-4 control-label"
+        = f.file_field :avatar, :class => "col-sm-8"
       - if current_user.avatar.url.present?
-        = f.label :Remove_Avatar, :class => "col-sm-2 control-label"
-        = f.check_box :remove_avatar
+        .col-sm-4
+        .col-sm-8
+          = f.check_box :remove_avatar
+          = f.label :Remove_Avatar
       .center
         .actions
           = f.submit "Update", :class => "btn btn-primary"

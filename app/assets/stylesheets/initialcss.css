@@ -6,24 +6,23 @@
 }
 body
 {
-  background-color: #d0d0e1;
+  background-color: white;
   display: block;
   margin: 8px;
-  background: #eee !important;
+
 }
 .questioncomment
 {
 
   font-style: italic;
   position: relative;
-  margin-left: 20px;
+
 }
 .question_answer
 {
 
   font-style: italic;
   position: relative;
-  margin-left: 20px;
   font-size: 100%;
   font-weight: bold;
 }
@@ -44,6 +43,7 @@ body
 .answer_comment_button
 {
   font-size: 90%;
+  margin-left: 30px;
 }
 .answer_comment_edit
 {
@@ -55,11 +55,11 @@ body
 }
 .question_edit
 {
-  font-size: 90%;
+  font-size: 75%;
 }
 .question_destroy
 {
-  font-size: 90%;
+  font-size: 75%;
 }
 .reviewer
 {
@@ -69,6 +69,7 @@ body
 {
   background-color: #b3ffe0;
 }
+
 html,body {
   height: 100%;
 }
@@ -105,4 +106,8 @@ h2
 .center
 {
   text-align: center;
+}
+.signed-in-navbar
+{
+  margin-top: -10px !important;
 }

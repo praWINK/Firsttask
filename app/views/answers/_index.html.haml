@@ -1,5 +1,6 @@
 - question.answers.each do |answer|
   .question_answer
+    %br
     %span= answer.answer
     %span.Firstname="-"
     %span= answer.user.Firstname
@@ -7,11 +8,11 @@
     - if current_user == answer.user
       %span.answer_edit= link_to 'Edit', edit_question_answer_path(id: answer.id, question_id: question.id)
       %span.answer_destroy= link_to 'Destroy', question_answer_path(id: answer.id, question_id: question.id), method: :delete, data: { confirm: 'Are you sure?' }
-      %span.answer_comment_button= link_to "Answer comment", new_question_answer_comment_path(question, answer_id: answer.id)
+
     %br/
-    %hr
   - answer.comments.each do|c|
     .answer_comment
+      %hr
       %span= c.comment
       %span.Firstname="-"
       %span= current_user.Firstname
@@ -19,5 +20,6 @@
       - if current_user == answer.user
         %span.answer_comment_edit= link_to 'Edit', edit_question_comment_path(id: c.id, question_id:question)
         %span.answer_comment_destroy= link_to 'Destroy', question_comment_path(id: c.id, question_id:question), method: :delete, data: { confirm: 'Are you sure?' }
-
+        %hr
+  %span.answer_comment_button= link_to "Answer comment", new_question_answer_comment_path(question, answer_id: answer.id)
 

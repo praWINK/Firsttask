@@ -4,7 +4,7 @@
       %tr
       %td= link_to question.content, question
       - if current_user == question.user
-        %td= link_to 'Edit', edit_question_path(question)
-        %td= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= button_to 'Edit', edit_question_path(question), class: "btn btn-primary btn-xs"
+        %td= button_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary btn-xs"
 %br/
 
