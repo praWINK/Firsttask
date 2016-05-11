@@ -1,0 +1,7 @@
+- question.comments.each do|c|
+   %span= c.comment
+   %span.Firstname="-"
+   %span= current_user.Firstname
+   %span= current_user.lastname
+   %span.question_edit= link_to 'Edit', edit_question_comment_path(id: c.id, question_id:question)
+   %span.question_destroy= link_to 'Destroy', question_comment_path(id: c.id, question_id:question), method: :delete, data: { confirm: 'Are you sure?' }

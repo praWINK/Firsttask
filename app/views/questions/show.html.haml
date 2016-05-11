@@ -1,0 +1,20 @@
+%h1
+  %span= @question.content
+  %span.Firstname= "-"
+  %span.reviewer= current_user.Firstname
+  %span.reviewer= current_user.lastname
+%hr
+%h4.questioncomment
+  = render :partial => 'comments/index', :locals => { comments: @comments, question: @question}
+%hr/
+= link_to "Add comment", new_question_comment_path(@question), method: :get
+%br/
+%br/
+%span= @question.answers.count
+%span= @question.user.anscount
+%span= link_to "Add answer", new_question_answer_path(@question), method: :get
+%br/
+%hr/
+= render :partial => 'answers/index', :locals => { answers: @answers, question: @question}
+%hr
+

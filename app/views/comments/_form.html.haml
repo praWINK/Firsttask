@@ -1,0 +1,19 @@
+= form_for([@question, @commentable]) do |f|
+  - if @commentable.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@commentable.errors.count, "error")
+        prohibited this commentable from being saved:
+      %ul
+        - @commentable.errors.full_messages.each do |message|
+          %li= message
+  .center
+    .field
+      = f.label :comments
+      %br/
+      = f.text_area :comment, cols: "60", rows: "10"
+      %br/
+      - if params[:answer_id].present?
+        = hidden_field_tag :answer_id, params[:answer_id]
+    .actions
+      = f.submit "Update Comment", :class => "btn btn-primary"

@@ -1,0 +1,10 @@
+%table
+  %tbody
+    - @questions.each do |question|
+      %tr
+      %td= link_to question.content, question
+      - if current_user == question.user
+        %td= link_to 'Edit', edit_question_path(question)
+        %td= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+
