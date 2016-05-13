@@ -16,8 +16,6 @@ class AnswersController < ApplicationController
   def edit
     find_question
     @answer = @question.answers.where(:id => params[:id]).first
-    #p @answer
-    #puts "LLLLLLLLLLLLLLLLLLLLLLLLL"
   end
 
   def destroy

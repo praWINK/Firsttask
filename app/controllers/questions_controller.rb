@@ -25,7 +25,6 @@ before_action :authenticate_user!, only: [:new]
 
  def create
     @question = current_user.questions.new(question_params)
-
     respond_to do |format|
       if @question.save
         format.html { redirect_to questions_path, notice: 'Question was successfully created.' }

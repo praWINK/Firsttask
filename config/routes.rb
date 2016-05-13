@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+  get "comments/comment_history"
 
   devise_for :users
 

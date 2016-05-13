@@ -3,4 +3,5 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :answered_users, source: :user, through: :answers
   has_many :comments, as: :commentable
+  validates :content, :presence => true
 end

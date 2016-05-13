@@ -1,0 +1,9 @@
+.answer_comment
+  - @comment_history.each do |comment|
+    %span= comment.comment
+    %span.Firstname="-"
+    %span= current_user.Firstname
+    %span= current_user.lastname
+    %br/
+    %br/
+

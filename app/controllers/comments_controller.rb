@@ -33,16 +33,49 @@ class CommentsController < ApplicationController
     end
   end
 
+
   def update
-    find_question
-    #@commentable = @question.comments.where(:id => params[:id]).first
-    @commentable.update(comment_params)
-    if (@commentable.commentable_type == 'Question')
-      redirect_to @question, notice: 'question comment was successfully updated.'
+    commentable = find_commentable
+    if @commentable.check_history?
+     p true
+     params = comment_params.merge(history_id: @commentable.id)
+     @commentable = commentable.comments.new(params)
+     @commentable.user = current_user
+     @commentable.save
     else
-      redirect_to @question, notice: 'Answer comment was successfully updated.'
-    end
+     p false
+     params = comment_params.merge(history_id: @commentable.history_id)
+     @commentable = commentable.comments.new(params)
+     @commentable.user = current_user
+     @commentable.save
+
+   end
+   # @commentable.update(post_params)
+   if(@commentable.commentable_type == "Question")
+     redirect_to @question, notice: 'Question_Comment was successfully updated.'
+   else
+     redirect_to @question, notice: 'Answer_Comment was successfully updated.'
+   end
+ end
+  def comment_history
+    p "params======$#{params}"
+    p "params[:history_id]====#{params[:history_id]}"
+    @comment_history = Comment.list_comment_history(params[:history_id], params[:dont_show])
+    p "@comment_history=====#{@comment_history.inspect}"
+   # Comment.where("history_id IS NULL AND id =? XOR history_id =? AND id != ?", 143,143, 143).order("id DESC").first
   end
+
+
+  # def update
+  #   find_question
+  #   #@commentable = @question.comments.where(:id => params[:id]).first
+  #   @commentable.update(comment_params)
+  #   if (@commentable.commentable_type == 'Question')
+  #     redirect_to @question, notice: 'question comment was successfully updated.'
+  #   else
+  #     redirect_to @question, notice: 'Answer comment was successfully updated.'
+  #   end
+  # end
 
 
 
@@ -69,7 +102,7 @@ class CommentsController < ApplicationController
        id = params[:question_id]
      end
      return "#{klass}".singularize.classify.constantize.find(id)
- end
+  end
   def set_comment
     @commentable = Comment.find(params[:id])
   end
