@@ -50,18 +50,20 @@ class CommentsController < ApplicationController
      @commentable.save
 
    end
-   # @commentable.update(post_params)
+
    if(@commentable.commentable_type == "Question")
+
      redirect_to @question, notice: 'Question_Comment was successfully updated.'
    else
+      # @commentable.update(comment_params)
      redirect_to @question, notice: 'Answer_Comment was successfully updated.'
    end
  end
   def comment_history
-    p "params======$#{params}"
-    p "params[:history_id]====#{params[:history_id]}"
+    # p "params======$#{params}"
+    # p "params[:history_id]====#{params[:history_id]}"
     @comment_history = Comment.list_comment_history(params[:history_id], params[:dont_show])
-    p "@comment_history=====#{@comment_history.inspect}"
+    # p "@comment_history=====#{@comment_history.inspect}"
    # Comment.where("history_id IS NULL AND id =? XOR history_id =? AND id != ?", 143,143, 143).order("id DESC").first
   end
 

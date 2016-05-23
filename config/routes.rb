@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'votes/create'
+
+  get 'votes/update'
+
+  get 'votes/destroy'
+
+  get 'votes/show'
+
+  get 'votes/index'
+
+  get 'votes/new'
+
   get "comments/comment_history"
 
   devise_for :users
@@ -7,7 +19,12 @@ Rails.application.routes.draw do
   concern :commentable do
     resources :comments
   end
+
+  concern :votable do
+    resources :votes
+  end
   resources :questions, concerns: :commentable do
+
     resources :answers, concerns: :commentable
   end
   #resources :questions do
